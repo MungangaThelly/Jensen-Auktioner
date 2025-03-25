@@ -5,12 +5,13 @@ import Home from './pages/Home';
 //import AuctionDetail from './pages/AuctionDetail';
 //import CreateAuction from './pages/CreateAuction';
 //import Login from './pages/Login';
-//import Register from './pages/Register';
+import Register from './pages/Register';
 //import UserProfile from './pages/UserProfile';
 
 function App() {
   return (
     <Router>
+      <Register/>
       <Routes>
         <Route path="/" element={<Home />} />
       </Routes>
