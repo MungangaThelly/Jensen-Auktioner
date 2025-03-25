@@ -11,6 +11,7 @@ import UserProfile from './pages/UserProfile';
 function App() {
   return (
     <Router>
+      <Register/>
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -24,3 +25,5 @@ function App() {
     </Router>
   );
 }
+
+export default App
