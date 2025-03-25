@@ -3,6 +3,8 @@ import { fetchAuctions } from '../services/api';
 import { Link } from 'react-router-dom';
 import styles from './Home.module.css';
 
+
+
 function Home() {
   const [auctions, setAuctions] = useState([]);
   const [loading, setLoading] = useState(true);

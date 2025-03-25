@@ -1,0 +1,55 @@
+/* Allmänna inställningar för header */
+header {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr; /* 3 kolumner: en för logotyp, en för navigation och en för knappen */
+    align-items: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+  }
+  
+  .Logo h1 {
+    font-size: 24px;
+    margin: 0;
+    text-align: left;
+  }
+  
+  /* Navigation */
+  nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+  }
+  
+  nav ul li {
+    font-size: 18px;
+    margin-right: 20px; /* Avstånd mellan länkar */
+  }
+  
+  nav ul li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  nav ul li a:hover {
+    color: #ffcc00; /* Gyllene färg vid hover */
+  }
+  
+  /* Login button */
+  .login-btn {
+    background-color: #ffcc00;
+    color: #333;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+  
+  .login-btn:hover {
+    background-color: #ff9900;
+  }
+  
