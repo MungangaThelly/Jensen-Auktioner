@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 
-export const Register = () => {
+const Register = () => {
   return (
     <div className="container">
         <div className="header">
@@ -18,9 +18,12 @@ export const Register = () => {
                 <input type="password" />
             </div>
         </div>
-        
+        <div className="submit-container">
+            <div className="submit">Register</div>
+            <div className="submit">Login</div>
+    </div>
     </div>
   )
 }
 
-
+export default Register
