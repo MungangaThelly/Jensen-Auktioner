@@ -5,7 +5,7 @@ import Home from './pages/Home';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Search from './components/Search';
-//import AuctionDetail from './pages/AuctionDetail';
+import AuctionList from './components/AuctionList';
 //import CreateAuction from './pages/CreateAuction';
 //import Login from './pages/Login';
 //import Register from './pages/Register';
@@ -18,6 +18,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/search/:query" element={<Search />} />
+        <Route path='/auctions' element ={<AuctionList />} />
       </Routes>
       <Footer />
     </Router>
