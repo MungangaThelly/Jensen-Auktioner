@@ -18,7 +18,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/search/:query" element={<Search />} />
-        <Route path='/auctions' element ={<AuctionList />} />
+        <Route path='/auction/:id' element ={<AuctionList />} />
       </Routes>
       <Footer />
     </Router>
