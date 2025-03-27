@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { createAuction } from "../services/AuktionService";
+import { createAuction } from "../services/api";
 
 const CreateAuction = () => {
     const [title, setTitle] = useState("");

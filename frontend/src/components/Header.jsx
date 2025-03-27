@@ -1,6 +1,7 @@
 import React from 'react';
 import "./Header.module.css"
-import './Search'
+import '../pages/SearchPage';
+import '../pages/Login';
 
 const Header = () => {
   return (
@@ -13,9 +14,10 @@ const Header = () => {
           <li><a href="/create">Skapa auktion</a></li>
           <li><a href="/account">Konto</a></li>
           <li><a href='/search'>Sök</a></li>
+          <li><a href="/login">Logga in</a></li>
+
         </ul>
       </nav>
-      <button className="login-btn">Logga in</button>
     </header>
   )
 }

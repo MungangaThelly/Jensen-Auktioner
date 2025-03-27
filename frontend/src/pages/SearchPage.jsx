@@ -1,5 +1,6 @@
-import './Search.module.css';
-import { useRef } from 'react';
+// src/pages/SearchPage.jsx
+
+import React, { useState, useEffect, useRef } from 'react';
 
 // Denna komponent hanterar sökningen och skickar tillbaka ett sökvillkor.
 // Props värdet searchAuctions är en pekare till en funktion i containern
