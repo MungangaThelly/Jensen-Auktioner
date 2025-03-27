@@ -28,9 +28,11 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   
+  
   .auction h3 {
     margin: 0;
     font-size: 1.25rem;
+    color:#ccc;
   }
   
   .auction p {
