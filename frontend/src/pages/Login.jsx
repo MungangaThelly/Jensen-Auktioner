@@ -12,10 +12,20 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      // Försök att logga in med användarnamn och lösenord
       const response = await login({ username, password });
+
+      // Spara token i localStorage för att hålla användaren inloggad
       localStorage.setItem('token', response.token);
+      
+      // Navigera användaren till startsidan eller annan sida
       navigate('/');
+
+      // Rensa alla fält efter lyckad inloggning
+      setUsername('');
+      setPassword('');
     } catch (err) {
+      // Om inloggningen misslyckas, visa ett felmeddelande
       setError('Fel användarnamn eller lösenord');
     }
   };

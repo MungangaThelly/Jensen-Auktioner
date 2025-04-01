@@ -28,7 +28,7 @@ export default [
         'warn',
         { allowConstantExport: true },
       ],
-      "React/pro-types":[]
+      "React/prop-types":[]
     },
   },
 ]

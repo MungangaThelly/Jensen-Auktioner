@@ -6,10 +6,12 @@
   
   .home h1 {
     text-align: center;
+    color: white;
   }
   
   .home h2 {
     margin-top: 20px;
+    color: white;
   }
   
   .auctionList {
@@ -32,11 +34,12 @@
   .auction h3 {
     margin: 0;
     font-size: 1.25rem;
-    color:#ccc;
+    color: burlywood;
   }
   
   .auction p {
     margin: 5px 0;
+    color: burlywood
   }
   
   .error {

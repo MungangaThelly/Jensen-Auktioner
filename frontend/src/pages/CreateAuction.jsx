@@ -1,63 +1,116 @@
 import { useState } from "react";
 import { createAuction } from "../services/api";
+import './CreateAuction.module.css';
 
 const CreateAuction = () => {
-    const [title, setTitle] = useState("");
-    const [description, setDescription] = useState("");
-    const [price, setPrice] = useState("");
-    const [startDate, setStartDate] = useState("");
-    const [endDate, setEndDate] = useState("");
-    const [createdBy, setCreatedBy] = useState("");
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [price, setPrice] = useState("");
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
+  const [createdBy, setCreatedBy] = useState("");
+  const [error, setError] = useState("");
 
-const handleSubmit = async (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
+
+    // Kontrollera att alla fält är ifyllda
+    if (!title || !description || !price || !startDate || !endDate || !createdBy) {
+      setError("Alla fält måste fyllas i.");
+      return;
+    }
+
     const auctionData = { title, description, price, startDate, endDate, createdBy };
 
     try {
-        const newAuction = await createAuction(auctionData);
-        console.log("Auction created:", newAuction)
+      const newAuction = await createAuction(auctionData);
+      console.log("Auction created:", newAuction);
 
-        setTitle("");
-        setDescription("");
-        setPrice("");
-        setStartDate("");
-        setEndDate("");
-        setCreatedBy("");
+      // Rensa formulärfälten efter skapande
+      setTitle("");
+      setDescription("");
+      setPrice("");
+      setStartDate("");
+      setEndDate("");
+      setCreatedBy("");
+      setError(""); // Rensa eventuella felmeddelanden
     } catch (error) {
-        console.error("Kunde inte skapa auktionen:", error);
-    } 
-}
+      console.error("Kunde inte skapa auktionen:", error);
+      setError("Det gick inte att skapa auktionen. Försök igen.");
+    }
+  };
 
-return (
+  return (
     <form onSubmit={handleSubmit}>
-        <div>
-            <label>Title:</label>
-            <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} required />
-        </div>
-        <div>
-            <label>Description:</label>
-            <textarea value={description} onChange={(e) => setDescription(e.target.value)} required />
-        </div>
-        <div>
-            <label>Price:</label>
-            <input type="number" value={price} onChange={(e) => setPrice(e.target.value)} required />
-        </div>
-        <div>
-            <label>Start Date:</label>
-            <input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} required />
-        </div>
-        <div>
-            <label>End Date:</label>
-            <input type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)} required />
-        </div>
-        <div>
-            <label>Created By:</label>
-            <input type="text" value={createdBy} onChange={(e) => setCreatedBy(e.target.value)} required />
-        </div>
-        <button type="submit">Create Auction</button>
-    </form>
-);
-};
+      {error && <p style={{ color: "red" }}>{error}</p>} {/* Visa eventuellt felmeddelande */}
 
+      <div>
+        <label htmlFor="title">Title:</label>
+        <input
+          id="title"
+          required
+          type="text"
+          placeholder="Ange auktionens titel"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+      </div>
+      <div>
+        <label htmlFor="description">Description:</label>
+        <textarea
+          id="description"
+          required
+          placeholder="Beskriv auktionen"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        />
+      </div>
+      <div>
+        <label htmlFor="price">Price:</label>
+        <input
+          id="price"
+          required
+          type="number"
+          placeholder="Ange startpris"
+          value={price}
+          onChange={(e) => setPrice(e.target.value)}
+        />
+      </div>
+      <div>
+        <label htmlFor="startDate">Start Date:</label>
+        <input
+          id="startDate"
+          required
+          type="date"
+          value={startDate}
+          onChange={(e) => setStartDate(e.target.value)}
+        />
+      </div>
+      <div>
+        <label htmlFor="endDate">End Date:</label>
+        <input
+          id="endDate"
+          required
+          type="date"
+          value={endDate}
+          onChange={(e) => setEndDate(e.target.value)}
+        />
+      </div>
+      <div>
+        <label htmlFor="createdBy">Created By:</label>
+        <input
+          id="createdBy"
+          required
+          type="text"
+          placeholder="Ange skapare"
+          value={createdBy}
+          onChange={(e) => setCreatedBy(e.target.value)}
+        />
+      </div>
+
+      <button type="submit">Create Auction</button>
+    </form>
+  );
+};
 
 export default CreateAuction;

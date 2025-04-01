@@ -11,6 +11,9 @@ const Search = ({ searchAuctions }) => {
     const handleClick = () => {
         // Här anropas funktionen i containern
         searchAuctions(textVal.current.value);
+        
+        // Rensa sökfältet efter sökningen
+        textVal.current.value = '';
     };
 
     return (

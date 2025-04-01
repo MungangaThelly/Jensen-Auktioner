@@ -45,4 +45,27 @@ router.post('/', authMiddleware, async (req, res) => {
   }
 });
 
+// Sök auktioner baserat på titel eller beskrivning
+router.get('/search', async (req, res) => {
+  const query = req.query.query || ''; // Hämta sökterm från query-parametern (ex. ?query=telefon)
+  
+  try {
+    // Använd MongoDB:s regex för att matcha sökordet (case insensitive)
+    const auctions = await Auction.find({
+      $or: [
+        { title: { $regex: query, $options: 'i' } }, // Matcha titel
+        { description: { $regex: query, $options: 'i' } } // Matcha beskrivning
+      ]
+    }).populate('createdBy', 'username'); // Hämta skapad av användarens namn
+
+    if (auctions.length > 0) {
+      res.json(auctions); // Skicka tillbaka de auktioner som matchade sökningen
+    } else {
+      res.status(404).json({ message: 'Inga auktioner hittades.' });
+    }
+  } catch (err) {
+    res.status(500).json({ message: 'Något gick fel vid sökningen.' });
+  }
+});
+
 module.exports = router;
