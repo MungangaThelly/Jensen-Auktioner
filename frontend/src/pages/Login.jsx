@@ -21,6 +21,9 @@ function Login() {
       // Navigera användaren till startsidan eller annan sida
       navigate('/');
 
+      // Visa ett alert meddelande efter lyckad inloggning
+      alert('Inloggning lyckades!');
+
       // Rensa alla fält efter lyckad inloggning
       setUsername('');
       setPassword('');

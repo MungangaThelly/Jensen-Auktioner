@@ -1,19 +1,30 @@
 // src/pages/SearchPage.jsx
 
 import React, { useState } from 'react';
+import './SearchPage.module.css';
 
 const SearchPage = ({ searchAuctions, searchResults }) => {
-  // State för att hålla koll på användarens sökfråga
   const [query, setQuery] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  // Funktion som uppdaterar sökfrågan när användaren skriver
-  const handleSearchChange = (e) => {
-    setQuery(e.target.value); // Uppdatera sökfrågan
+  const handleSearchAuctions = (e) => {
+    setQuery(e.target.value);  // Update the search query
   };
 
-  // Funktion som anropas när användaren klickar på "Sök"
-  const handleSearchSubmit = () => {
-    searchAuctions(query); // Anropa searchAuctions med sökfrågan
+  const handleSearchSubmit = async () => {
+    if (!query) return;
+
+    setLoading(true);
+    setError(null);
+
+    try {
+      await searchAuctions(query);  // Call searchAuctions function passed as prop
+    } catch (err) {
+      setError('Det gick inte att hämta sökresultat.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -23,22 +34,28 @@ const SearchPage = ({ searchAuctions, searchResults }) => {
         type="text"
         placeholder="Sök efter titel"
         value={query}
-        onChange={handleSearchChange} // Uppdatera sökfrågan vid varje teckeninmatning
+        onChange={handleSearchAuctions}  // Corrected handler here
       />
-      <button onClick={handleSearchSubmit}>Sök</button>
+      <button onClick={handleSearchSubmit} disabled={loading}>Sök</button>
 
-      {/* Visa sökresultaten */}
+      {/* Loading indicator */}
+      {loading && <p>Laddar...</p>}
+
+      {/* Error handling */}
+      {error && <p style={{ color: 'red' }}>{error}</p>}
+
+      {/* Display results */}
       <h2>Sökresultat</h2>
       <ul>
         {searchResults.length > 0 ? (
-          searchResults.map((auction, index) => (
-            <li key={index}>
+          searchResults.map((auction) => (
+            <li key={auction._id}>
               <h3>{auction.title}</h3>
               <p>{auction.description}</p>
             </li>
           ))
         ) : (
-          <p>Inga resultat funna</p> // Om inga resultat hittas, visa ett meddelande
+          <p>Inga resultat hittades</p>
         )}
       </ul>
     </div>

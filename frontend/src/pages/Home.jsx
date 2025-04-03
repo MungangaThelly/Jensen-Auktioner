@@ -35,23 +35,12 @@ function Home() {
   return (
     <div className={styles.home}>
       <h1>Välkommen till Jensen Auktioner</h1>
-      <h2>Aktiva auktioner</h2>
-      <div className={styles.auctionList}>
-        {auctions.length > 0 ? (
-          auctions.map((auction) => (
-            <div key={auction._id} className={styles.auction}>
-              <Link to={`/auction/${auction._id}`}>
-                <h3>{auction.title}</h3>
-                <p>{auction.description}</p>
-                <p>Startpris: {auction.price} SEK</p>
-                <p>Slutdatum: {new Date(auction.endDate).toLocaleDateString()}</p>
-              </Link>
-            </div>
-          ))
-        ) : (
-          <p>Inga aktiva auktioner för tillfället.</p>
-        )}
-      </div>
+
+      <h5>Börja sälja online <br /> 
+      Anslut dig till över 700 000 butiker över hela världen. Börja gratis utan begränsad testperiod.
+      </h5>
+      
+      <h3>Din kompletta e-handelslösning</h3>
     </div>
   );
 }

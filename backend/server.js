@@ -1,4 +1,4 @@
-require('dotenv').config();  
+require('dotenv').config();
 
 const express = require('express');
 const cors = require('cors');
@@ -11,11 +11,15 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-
+// MongoDB connection
 mongoose.connect(process.env.MONGODB_URI)
   .then(() => console.log('MongoDB connected'))
   .catch((err) => console.log('MongoDB connection error:', err));
 
+// Lösning för populate-fel - lägg till denna rad
+mongoose.set('strictPopulate', false);  // <-- VIKTIGT: Placera här!
+
+// Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/auctions', auctionRoutes);
 app.use('/api/bids', bidRoutes);

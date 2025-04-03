@@ -3,15 +3,14 @@ header {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr; /* 3 kolumner: en för logotyp, en för navigation och en för knappen */
   align-items: center;
-  padding: 20px;
-  background-color: whitesmoke;
-  color: black;
+  padding: 15px;
 }
 
 .Logo h1 {
   font-size: 24px;
   margin: 0;
   text-align: left;
+  color: white;
 }
 
 /* Navigation */
@@ -28,13 +27,13 @@ nav ul li {
 }
 
 nav ul li a {
-  color: black;
+  color: white;
   text-decoration: none;
   transition: color 0.3s;
 }
 
 nav ul li a:hover {
-  color: #ffcc00; /* Gyllene färg vid hover */
+  color: orangered; /* Gyllene färg vid hover */
 }
 
 /* Login button */
@@ -111,6 +110,7 @@ nav ul li a:hover {
   .Logo h1 {
     font-size: 20px; /* Minska fontstorlek på små skärmar */
   }
+
 
   nav ul {
     flex-direction: column; /* Gör navigeringen vertikal */

@@ -33,6 +33,9 @@ function Register() {
       // Om registreringen lyckas, spara token i localStorage och logga in användaren direkt
       localStorage.setItem('token', response.token);
       
+      // Visa ett alert meddelande efter lyckad registrering
+      alert('Skapning lyckades! tack.');
+
       // Navigera till hemsidan eller en annan sida efter registrering
       navigate('/');
       
