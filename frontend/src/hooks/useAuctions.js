@@ -40,7 +40,7 @@ const useAuctions = () => {
   const [searchError, setSearchError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  // Fetch all auctions
+  // Hämta alla auktioner
   useEffect(() => {
     const fetchAuctions = async () => {
       setIsLoading(true);
@@ -57,7 +57,7 @@ const useAuctions = () => {
     fetchAuctions();
   }, []);
 
-  // Search auctions
+  // Sök auktioner
   const searchAuctions = async (query) => {
     setIsSearching(true);
     setSearchError(null);

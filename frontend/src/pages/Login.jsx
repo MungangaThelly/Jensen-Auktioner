@@ -12,7 +12,7 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Försök att logga in med användarnamn och lösenord
+      // här loggar vi in med användarnamn och lösenord
       const response = await login({ username, password });
 
       // Spara token i localStorage för att hålla användaren inloggad

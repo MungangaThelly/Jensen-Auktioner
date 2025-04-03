@@ -14,7 +14,7 @@ const CreateAuction = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    // Kontrollera att alla fält är ifyllda
+    // Här kontrollerar vi att alla fält är ifyllda
     if (!title || !description || !price || !startDate || !endDate || !createdBy) {
       setError("Alla fält måste fyllas i.");
       return;
@@ -42,7 +42,7 @@ const CreateAuction = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      {error && <p style={{ color: "red" }}>{error}</p>} {/* Visa eventuellt felmeddelande */}
+      {error && <p style={{ color: "red" }}>{error}</p>} // här visar eventuellt felmeddelande 
 
       <div>
         <label htmlFor="title">Title:</label>

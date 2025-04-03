@@ -1,5 +1,3 @@
-// src/pages/SearchPage.jsx
-
 import React, { useState } from 'react';
 import './SearchPage.module.css';
 
@@ -9,7 +7,7 @@ const SearchPage = ({ searchAuctions, searchResults }) => {
   const [error, setError] = useState(null);
 
   const handleSearchAuctions = (e) => {
-    setQuery(e.target.value);  // Update the search query
+    setQuery(e.target.value);  // Uppdatera sökfrågan
   };
 
   const handleSearchSubmit = async () => {
@@ -19,7 +17,7 @@ const SearchPage = ({ searchAuctions, searchResults }) => {
     setError(null);
 
     try {
-      await searchAuctions(query);  // Call searchAuctions function passed as prop
+      await searchAuctions(query);  //Anropa funktionen searchAuctions som skickats som prop
     } catch (err) {
       setError('Det gick inte att hämta sökresultat.');
     } finally {
@@ -34,17 +32,14 @@ const SearchPage = ({ searchAuctions, searchResults }) => {
         type="text"
         placeholder="Sök efter titel"
         value={query}
-        onChange={handleSearchAuctions}  // Corrected handler here
+        onChange={handleSearchAuctions}  // Korrigerad hanterare här
       />
       <button onClick={handleSearchSubmit} disabled={loading}>Sök</button>
 
-      {/* Loading indicator */}
       {loading && <p>Laddar...</p>}
 
-      {/* Error handling */}
       {error && <p style={{ color: 'red' }}>{error}</p>}
 
-      {/* Display results */}
       <h2>Sökresultat</h2>
       <ul>
         {searchResults.length > 0 ? (

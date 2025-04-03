@@ -9,11 +9,11 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import CreateAuction from './pages/CreateAuction';
 import AuctionDetail from './pages/AuctionDetail';
-import useAuctions from './hooks/useAuctions';  // Import the custom hook
+import useAuctions from './hooks/useAuctions';  
 import './App.css';
 
 function App() {
-  // Using the custom hook to manage auction data
+  // Här användar vi den anpassade hook för att hantera auktionsdata
   const {
     auctions,
     searchResults,

@@ -1,26 +1,26 @@
 import React, { useState } from 'react';
-import { register } from '../services/api'; // Se till att din API-funktion accepterar e-post
+import { register } from '../services/api'; 
 import { useNavigate } from 'react-router-dom';
 import styles from './Register.module.css';
 
 function Register() {
-  const [email, setEmail] = useState(''); // Håller reda på användarens e-post
-  const [username, setUsername] = useState(''); // Håller reda på användarnamn
-  const [password, setPassword] = useState(''); // Håller reda på lösenord
-  const [confirmPassword, setConfirmPassword] = useState(''); // Håller reda på bekräftat lösenord
+  const [email, setEmail] = useState(''); 
+  const [username, setUsername] = useState(''); 
+  const [password, setPassword] = useState(''); 
+  const [confirmPassword, setConfirmPassword] = useState(''); 
   const [error, setError] = useState(''); // För att lagra eventuella felmeddelanden
   const navigate = useNavigate(); // För att navigera användaren efter registrering
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Kontrollera att lösenorden matchar
+    // Här kontrollerar vi att lösenorden matchar
     if (password !== confirmPassword) {
       setError('Lösenorden matchar inte');
       return;
     }
 
-    // Kontrollera att alla fält är ifyllda
+    // Här kontrollerar vi att alla fält är ifyllda
     if (!email || !username || !password) {
       setError('Alla fält måste fyllas i');
       return;
@@ -54,7 +54,7 @@ function Register() {
     <div className={styles.register}>
       <h1>Registrera dig</h1>
       <form onSubmit={handleSubmit}>
-        {/* Användarnamn */}
+        
         <input
           type="text"
           value={username}
@@ -63,7 +63,6 @@ function Register() {
           required
         />
 
-        {/* E-postinmatning */}
         <input
           type="email"
           value={email}
@@ -72,7 +71,6 @@ function Register() {
           required
         />
         
-        {/* Lösenord */}
         <input
           type="password"
           value={password}
@@ -81,7 +79,6 @@ function Register() {
           required
         />
         
-        {/* Bekräfta lösenord */}
         <input
           type="password"
           value={confirmPassword}
@@ -90,10 +87,8 @@ function Register() {
           required
         />
         
-        {/* Registrera-knapp */}
         <button type="submit">Registrera</button>
         
-        {/* Felmeddelande */}
         {error && <p className={styles.error}>{error}</p>}
       </form>
     </div>

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/api'; // Ange din backend-URL här
+const API_URL = 'http://localhost:5000/api'; // backend-URL här
 
 // Skapa en instans av axios
 const api = axios.create({
@@ -10,7 +10,7 @@ const api = axios.create({
   },
 });
 
-// Lägg till en request interceptor för att inkludera JWT-token i varje anrop
+// Här JWT-token inkluderade i varje anrop
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem('token');
   if (token) {
@@ -19,12 +19,12 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
-// Exportera API-funktioner
+// Här API-funktioner exporterade
 export const fetchAuctions = async () => {
   const response = await fetch('http://localhost:5000/api/auctions');
   const data = await response.json();
   
-  // Kontrollera om svaret är en array eller har en egenskap 'auctions'
+  // Här svaret är 'auctions'
   return Array.isArray(data) ? data : data.auctions || [];
 };
 
@@ -62,12 +62,12 @@ export const register = async (userData) => {
   return response.data;
 };
 
-// Funktion för att söka auktioner
+// Här funktion för att söka auktioner
 export const searchAuctions = async (searchParams) => {
   try {
     const { query, category, status } = searchParams;
 
-    // Skicka en GET-förfrågan till backend med sökparametrar
+    // Här Skickar vi en GET-förfrågan till backend med sökparametrar
     const response = await api.get('/auctions/search', {
       params: {
         query,   // Här skickar vi den korrekta parametern 'query'
